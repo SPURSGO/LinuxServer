@@ -1,0 +1,6 @@
+
+此服务器程序用以研究int listen(int sockfd, int backlog);函数中backlog参数对listen系统调用的实际影响
+
+
+查看结果可知：内核中的监听队列的实际最大长度要比backlog所制定的数量要大一点点
+

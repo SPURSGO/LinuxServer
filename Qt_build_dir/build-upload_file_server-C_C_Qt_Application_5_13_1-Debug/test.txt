@@ -1,0 +1,37 @@
+/*
+ *  gendisk handling
+ */
+
+#include <linux/module.h>
+#include <linux/fs.h>
+#include <linux/genhd.h>
+#include <linux/kdev_t.h>
+#include <linux/kernel.h>
+#include <linux/blkdev.h>
+#include <linux/init.h>
+#include <linux/spinlock.h>
+#include <linux/seq_file.h>
+#include <linux/slab.h>
+#include <linux/kmod.h>
+#include <linux/kobj_map.h>
+#include <linux/buffer_head.h>
+#include <linux/mutex.h>
+
+struct kset block_subsys;
+static DEFINE_MUTEX(block_subsys_lock);
+
+/*
+ * Can be deleted altogether. Later.
+ *
+ */
+static struct blk_major_name {
+	struct blk_major_name *next;
+	int major;
+	char name[16];
+} *major_names[BLKDEV_MAJOR_HASH_SIZE];
+
+/* index in the above - for now: assume no multimajor ranges */
+static inline int major_to_index(int major)
+{
+	return major % BLKDEV_MAJOR_HASH_SIZE;
+}
