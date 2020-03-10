@@ -45,7 +45,7 @@ int main( int argc, char *argv[] )
     else
     {
         close( STDOUT_FILENO );  /* STDOUT_FILENO, close() ---> <unistd.h> */
-        dup(connfd);  /* dup(),dup2() ---> <unistd.h> */
+        dup(connfd);            /* dup(),dup2() ---> <unistd.h> */
         printf("abcd\n");
         close(connfd);
     }

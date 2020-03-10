@@ -1,0 +1,8 @@
+总用量 88
+drwxr-xr-x  2 root root  4096  3月  4 15:52 .
+drwxr-xr-x 18 root root  4096  3月  3 21:48 ..
+-rw-r--r--  1 root root     0  3月  4 15:53 dir_log.txt
+-rw-r--r--  1 root root 10920  3月  4 15:35 main.o
+-rw-r--r--  1 root root 38298  3月  3 18:45 Makefile
+-rw-r--r--  1 root root   679  1月 12 11:57 .qmake.stash
+-rwxr-xr-x  1 root root 22432  3月  4 15:35 upload_file_client

@@ -49,12 +49,26 @@ int main(int argc, char *argv[])
     else
     {
         /* success */
-        const char *oob_data = "abc";
-        const char *normal_data = "123";
+//        const char *oob_data = "abc";
+        const char *normal_data =
+                "sncsnjksnjknsdjknsjksdnjsdknfjksdnfjksdnf"
+                "sddfdsfdfsdfsdjksncjdklmsdklmklsdsnsdnkfs";
         /* 对于字符发送缓冲区的大小，用strlen()指定 */
         send(sockfd, normal_data, strlen(normal_data), 0);
-        send(sockfd, oob_data, strlen(oob_data), MSG_OOB);
-        send(sockfd, normal_data, strlen(normal_data), 0);
+//        send(sockfd, oob_data, strlen(oob_data), MSG_OOB);
+//        send(sockfd, normal_data, strlen(normal_data), 0);
+        sleep(3);
+        const char *normal_data2 =
+                "sncsnjksnjknsdjknsjknsdnjsdknfjksdnfjksdnf"
+                "sddfdsfsdklsmsdklmklsdsnsdnkfs-second-send";
+        send(sockfd, normal_data2, strlen(normal_data2), 0);
+
+        sleep(20);
+        const char *normal_data3 =
+                "sncsnjksnjknsdjknsjknsdnjsdknfjksdnfjksdnf"
+                "sddfdsfsdklsmsdklmklsdsnsdnkfs-third-send";
+        send(sockfd, normal_data3, strlen(normal_data3), 0);
+        sleep(5);
     }
 
     close(sockfd); // <unistd.h>

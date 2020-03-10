@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
     addr.sin_port = htons((unsigned short)port);
 
     int sockfd = socket(PF_INET, SOCK_STREAM, 0);
+    printf("sockfd is %d\n", sockfd);
     assert(sockfd >= 0);
 
     int ret = bind(sockfd, (struct sockaddr *)&addr, sizeof (addr));
@@ -39,6 +40,7 @@ int main(int argc, char *argv[])
     struct sockaddr_in client;
     int client_addrlen = sizeof (client);
     int connfd = accept(sockfd, (struct sockaddr *)&client, (socklen_t *)&client_addrlen);
+    printf("connfd is %d\n", connfd);
     if(connfd < 0)
     {
         printf("connect fail!\n");
